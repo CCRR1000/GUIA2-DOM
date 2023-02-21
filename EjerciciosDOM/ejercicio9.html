@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 9</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /**
+     * EJERCICIO 9:
+     * Se realiza la carga de 10 valores enteros por teclado. Se desea conocer:
+     *     ♥ La cantidad de valores negativos ingresados.
+     *     ♥ La cantidad de valores positivos ingresados.
+     *     ♥ La cantidad de múltiplos de 15.
+     *     ♥ El valor acumulado de los números ingresados que son pares.
+    */
+
+    let array = new Array(10);
+
+    for (let i = 0; i < array.length; i++) {
+        array[i] = Number(prompt("Ingrese el " + (i+1) + "o. número:"));
+    }
+
+    let negativos = 0;
+    let positivos = 0;
+    let muliplo15 = 0;
+    let sumaPares = 0;
+
+    array.forEach(num => {
+        if (num > 0)
+            positivos++;        
+        if (num < 0)
+            negativos++;        
+        if (num % 15 == 0)
+            muliplo15++;        
+        if (num % 2 == 0)
+            sumaPares += num;        
+        document.write(num + "<br>");
+    });
+
+    document.write("Cantidad de valores positivos: " + positivos + "<br>");
+    document.write("Cantidad de valores negativos: " + negativos + "<br>");
+    document.write("Cantidad de múltiplos de 15: " + muliplo15 + "<br>");
+    document.write("Acumulado de números pares: " + sumaPares + "<br>");
+
+</script>
+</html>

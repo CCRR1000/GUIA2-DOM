@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 3</title>
+    
+</head>
+<body>
+    <h1>PRUEBA TABLA</h1>
+    <table id="tabla"></table>
+</body>
+<script>
+
+    let nombre = "Spencer";
+
+    let tabla = document.getElementById("tabla");
+    let thead = document.createElement('thead');
+
+    let fila = document.createElement('tr');
+    let data1 = document.createElement('td');
+    data1.textContent("Nombre:");
+    fila.appendChild(data1);
+
+    let data2 = document.createElement('td');
+    data2.innerText(nombre);
+    fila.appendChild(data2);
+
+    thead.appendChild(fila);
+    tabla.appendChild(thead);
+</script>
+<!-- <script>
+    /**
+     * EJERCICIO 3: 
+     * CATEGORIA | AUMENTO 
+     * --------------------
+     *     A     |   15%
+     *     B     |   30% 
+     *     C     |   10%
+     *     D     |   20%
+     * Calcular el aumento de trabajador tomando en cuenta la tabla de categorías de aumento. 
+     * Para este ejercicio deberá de asignar las siguientes variables: Nombre, Salario, Categoría y Aumento. 
+     * Deberá demostrar en html los datos del empleado y el aumento salarial.
+    */
+
+    
+
+    const nombre = "Pepito";
+    const salario = "500";
+    const categoria = "B";
+    const aumento = calcularAumento(categoria,salario);
+
+    function calcularAumento(categoria, salario) {
+        switch (categoria) {
+            case "A":
+                aumento = salario * 0.15;
+                break;
+            case "B":
+                aumento = salario * 0.3;
+                break;
+            case "C":
+                aumento = salario * 0.1;
+                break;
+            case "D":
+                aumento = salario * 0.2;
+                break;
+            default:
+                break;
+        }
+    }
+
+    let tabla = document.getElementById("tabla");
+
+    let fila = document.createElement('tr');
+    let data1 = document.createElement('td');
+    data1.textContent("Nombre:");
+    let data2 = document.createElement('td');
+    data2.textContent(nombre);
+
+    fila.appendChild(data1);
+    fila.appendChild(data2);
+
+    tabla.appendChild(fila);
+    
+    /* let fila1 = crearFila("Nombre", nombre);
+    let fila2 = crearFila("Salario", salario);
+    let fila3 = crearFila("Categoría", categoría);
+    let fila4 = crearFila("Aumento", aumento);
+
+    tabla.appendChild(fila1);
+    tabla.appendChild(fila2);
+    tabla.appendChild(fila3);
+    tabla.appendChild(fila4); */
+/*
+    let titulo = document.createElement("h3");
+    titulo.innerText("Prueba tabla");
+
+    let tabla = document.createElement("table");
+
+    let fila1 = crearFila("Nombre", nombre);
+    let fila2 = crearFila("Salario", salario);
+    let fila3 = crearFila("Categoría", categoría);
+    let fila4 = crearFila("Aumento", aumento);
+
+    tabla.appendChild(fila1);
+    tabla.appendChild(fila2);
+    tabla.appendChild(fila3);
+    tabla.appendChild(fila4);
+*/
+    function crearFila(col1, col2) {
+        let fila = document.createElement("tr");
+        fila.appendChild(crearTag("th",col1));
+        fila.appendChild(crearTag("td",col2));
+        return fila;
+    }
+
+    function crearTag(tag, content) {
+        let elemento = document.createElement(tag);
+        elemento.innerText(content);
+        return elemento;
+    } 
+</script> -->
+</html>

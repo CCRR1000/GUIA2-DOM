@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 10</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /**
+     * EJERCICIO 10:
+     * Se cuenta con la siguiente información:
+     *     ♥ Las edades de 5 estudiantes del turno mañana.
+     *     ♥ Las edades de 6 estudiantes del turno tarde.
+     *     ♥ Las edades de 11 estudiantes del turno noche.
+     * Nota: Las edades de cada estudiante se deberán ingresar por la web.
+     * 
+     * Lo que queremos devolver:
+     *     ♥ Obtener el promedio de las edades de cada turno (tres promedios).
+     *     ♥ Imprimir dichos promedios (promedio de cada turno).
+     *     ♥ Mostrar por pantalla un mensaje que indique cuál de los tres turnos tiene un promedio de edades mayor
+    */
+
+    let manana = new Array(5);
+    let tarde = new Array(6);
+    let noche = new Array(11);
+
+    for (let i = 0; i < manana.length; i++) {
+        manana[i] = Number(prompt("TURNO MAÑANA:\nIngrese el " + (i+1) + "o. número:"));
+    }
+    for (let i = 0; i < tarde.length; i++) {
+        tarde[i] = Number(prompt("TURNO TARDE:\nIngrese el " + (i+1) + "o. número:"));
+    }
+    for (let i = 0; i < noche.length; i++) {
+        noche[i] = Number(prompt("TURNO NOCHE:\nIngrese el " + (i+1) + "o. número:"));
+    }
+
+    let mediaManana = getPromedio(manana);
+    let mediaTarde = getPromedio(tarde);
+    let mediaNoche = getPromedio(noche);
+
+    let mayor = getMayor(mediaManana, mediaTarde, mediaNoche);
+
+    document.write("Promedio Mañana: " + mediaManana + "<br>");
+    document.write("Promedio Tarde: " + mediaTarde + "<br>");
+    document.write("Promedio Noche: " + mediaNoche + "<br>");
+
+    document.write("<br>Promedio Mayor: " + mayor + "<br>");
+
+    function getPromedio(array) {
+        let media = 0;
+        array.forEach(num => {
+            media += num;
+        });
+        return (media / array.length);
+    }
+
+    function getMayor(num1, num2, num3) {
+        if (num1 > num2 && num1 > num3) {
+            return num1;
+        } else if (num2 > num1 && num2 > num3) {
+            return num2;
+        } else {
+            return num3;
+        }
+    }
+</script>
+</html>

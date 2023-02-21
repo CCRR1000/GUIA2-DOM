@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 6</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /**
+     * EJERCICIO 6:
+     * Crear una Función para calcular el descuento en viajes turísticos tomando en cuenta lo siguiente:
+     * Si el usuario introduce como origen la ciudad de Palma y como destino La costa del Sol, 
+     * el descuento será de 5%, si el destino es Panchimalco el descuento será del 10% 
+     * y si el destino es Puerto el Triunfo el descuento será del 15%.
+    */
+
+    let destino = "PANCHIMALCO";
+
+    document.write("Destino seleccionado: " + destino + ", el descuento a aplicar es de " + getDescuento(destino) + "%");
+
+    function getDescuento(auto) {
+        let descuento = 0;
+        switch (auto) {
+            case "LA COSTA DEL SOL":
+                descuento = 5;
+                break;
+            case "PANCHIMALCO":
+                descuento = 10;
+                break;
+            case "PUERTO EL TRIUNFO":
+                descuento = 15;
+                break;
+            default:
+                break;
+        }
+        return descuento;
+    }
+</script>
+</html>

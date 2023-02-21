@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 5</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /**
+     * EJERCICIO 5:
+     * Realizar una función para una tienda de coches en donde se deberá calcular: 
+     * Si el coche a la venta es un FORD FIESTA, aplicar un 5% de descuento en la compra. 
+     * Si el coche a la venta es un FORD FOCUS, el descuento será del 10% y si es un FORD ESCAPE el descuento será del 20%. 
+     * Mostrar en html el coche seleccionado y el descuento que se aplicara en base a lo que selecciono el usuario.
+    */
+
+    let auto = "FORD ESCAPE";
+
+    document.write("Auto seleccionado: " + auto + ", el descuento a aplicar es de " + getDescuento(auto) + "%");
+
+    function getDescuento(auto) {
+        let descuento = 0;
+        switch (auto) {
+            case "FORD FIESTA":
+                descuento = 5;
+                break;
+            case "FORD FOCUS":
+                descuento = 10;
+                break;
+            case "FORD ESCAPE":
+                descuento = 20;
+                break;
+            default:
+                break;
+        }
+        return descuento;
+    }
+    
+</script>
+</html>

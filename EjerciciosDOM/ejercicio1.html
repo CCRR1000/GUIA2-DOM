@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 1</title>
+    <style>
+        * {
+            font-size: 1.5rem;
+            background-color: rgb(50, 50, 50);
+            color: white;
+        }
+        #contenedor {
+            width: 40%;
+            margin: auto;
+            margin-top: 75px;
+        }
+        #titulo {
+            text-align: center;
+            text-transform: uppercase;
+            /* color: rgb(6, 104, 104); */
+        }
+        #edad {
+            background-color: gray;
+        }
+        #respuesta {
+            font-weight: bold; 
+            color: blue;
+        }
+        button {
+            background-color: rgb(6, 104, 104);
+            border-radius: 15px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <h1 id="titulo">Mayoría de edad</h1> <br>
+        <label for="">Ingrese su edad:</label> <br><br>
+        <input type="text" id="edad"> <br><br>
+        <button>Enviar</button> <br> <br>
+        <!-- <button onclick="getRespuesta()">Enviar</button> <br> <br> -->
+        <p id="respuesta"></p>
+        <br>
+    </div>
+</body>
+<script>
+    /** 
+     * Ejercicio 1:
+     * Crear una función que en base a la edad que ingreso el usuario 
+     * devolver un mensaje si la persona es mayor de edad o no. 
+     * Utilizar para la condición el operador ternario. 
+     */
+
+    let boton = document.querySelector('button');
+    boton.addEventListener('click', getRespuesta);
+    
+    function getRespuesta() {
+
+        const edad = document.getElementById('edad');
+        const mayorDeEdad = (edad.value >= 18) ? "USTED ES MAYOR DE EDAD." : "USTED ES MENOR DE EDAD.";
+        
+        const parrafo = document.getElementById('respuesta');
+        parrafo.textContent = mayorDeEdad;
+    }
+    
+
+    
+
+</script>
+</html>

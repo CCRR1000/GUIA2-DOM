@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA 2 - Ejercicio 2 </title>
+    <style>
+        * {
+            font-size: 1.10rem;
+            background-color: rgb(50, 50, 50);
+            color: white;
+        }
+        .contenedor {
+            width: 35%;
+            margin: auto;
+            margin-top: 75px;
+        }
+        #titulo {
+            text-align: center;
+            text-transform: uppercase;
+            /* color: rgb(6, 104, 104); */
+        }
+        input {
+            background-color: gray;
+        }
+        button {
+            background-color: rgb(6, 104, 104);
+            border-radius: 15px;
+            padding: 10px;
+        }
+        table {
+            text-align: right;
+            font-weight: bold; 
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="contenedor">
+        <h1 id="titulo">Nota Final</h1>
+        <h4>Datos de Estudiante</h4>
+        <table class="tabla"></table>
+        <button>Calcular Nota</button>
+        <br><br>
+        <table id="resultado"></table>
+    </div>
+</body>
+<script>
+    /**
+     * EJERCICIO 2:
+     * Crear una función que determine la nota final de un alumno, la cual depende de lo siguiente:
+     *     ♥ Examen = 20%
+     *     ♥ Tareas = 40%
+     *     ♥ Asistencia = 10%
+     *     ♥ Investigación = 30%
+     * Al final deberá mostrar los datos del alumno, nombre, carnet y nota final.
+    */
+
+    let labelDatos = ["Nombre: ", "Carnet: "];
+    let labelsNota = ["Examen: ", "Tareas: ", "Asistencia: ", "Investigación: "];
+    
+    let tabla = document.querySelector('.tabla');
+    crearCasillas(labelDatos);
+    crearCasillas(labelsNota);
+
+    let boton = document.querySelector('button');
+    boton.addEventListener('click', getTotal);
+
+    function crearCasillas(array) {
+        
+        array.forEach(element => {
+            let th = document.createElement('th');
+            let td = document.createElement('td');
+
+            let label = document.createElement('label');
+            label.textContent = element;
+            th.appendChild(label);
+
+            let input = document.createElement('input');
+            td.appendChild(input);
+            
+            addFila(th, td, tabla);
+
+            let salto = document.createElement('br');
+            tabla.appendChild(salto);
+            tabla.appendChild(salto);
+        });
+    }
+    
+    function getTotal() {
+        let inputs = document.querySelectorAll('input');
+        let porcentajes = [0.2,0.4,0.1,0.3];
+        let total = 0;
+
+        for(let i=2; i<inputs.length; i++) {
+            let notaParcial = Number(inputs[i].value) * porcentajes[i-2];
+            total += notaParcial;
+            console.log(inputs[i].value + ", " + notaParcial);
+        }
+        console.log("Total: " + total);
+
+        mostrarResultados(total, inputs);
+    }
+
+    function mostrarResultados(total, entradas) {
+        let tablaR = document.getElementById('resultado');
+        let salto = document.createElement('br');
+        
+        let th = document.createElement('th');
+        let td = document.createElement('td');
+        th.textContent = labelDatos[0];
+        td.textContent = entradas[0].value;
+        addFila(th,td,tablaR);
+
+        let th2 = document.createElement('th');
+        let td2 = document.createElement('td');
+        th2.textContent = labelDatos[1];
+        td2.textContent = entradas[1].value;
+        addFila(th2,td2,tablaR);
+        
+        let th3 = document.createElement('th');
+        let td3 = document.createElement('td');
+        th3.textContent = "Nota Final: ";
+        td3.textContent = total;
+        addFila(th3,td3,tablaR);
+        tablaR.appendChild(salto);
+    }
+
+    function addFila(th,td,table) {
+        let fila = document.createElement('tr');
+        fila.appendChild(th);
+        fila.appendChild(td);
+        table.appendChild(fila);
+    }
+    
+</script>
+</html>
