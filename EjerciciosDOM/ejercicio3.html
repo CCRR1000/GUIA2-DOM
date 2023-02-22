@@ -8,29 +8,57 @@
     
 </head>
 <body>
-    <h1>PRUEBA TABLA</h1>
-    <table id="tabla"></table>
+    <div>
+        <h1>CALCULAR AUMENTO</h1>
+
+        <table id="tabla">
+            <tr>
+                <th> <label></label> </th>
+                <td> <input type="text" id="nombre"> </td>
+            </tr>
+            <tr>
+                <th> <label></label> </th>
+                <td> <input type="text" id="salario"> </td>
+            </tr>
+            <tr>
+                <th> <label></label> </th>
+                <td>
+                    <select id="categoria">
+                        <option value=""></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <button onclick="calcular()">Calcular</button>
+        <br><br>
+        
+        <table id="resultado">
+            <tr>
+                <th> </th>
+                <td> </td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td> </td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td> </td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td> </td>
+            </tr>
+        </table>
+    </div>
 </body>
 <script>
 
-    let nombre = "Spencer";
-
-    let tabla = document.getElementById("tabla");
-    let thead = document.createElement('thead');
-
-    let fila = document.createElement('tr');
-    let data1 = document.createElement('td');
-    data1.textContent("Nombre:");
-    fila.appendChild(data1);
-
-    let data2 = document.createElement('td');
-    data2.innerText(nombre);
-    fila.appendChild(data2);
-
-    thead.appendChild(fila);
-    tabla.appendChild(thead);
-</script>
-<!-- <script>
     /**
      * EJERCICIO 3: 
      * CATEGORIA | AUMENTO 
@@ -44,14 +72,31 @@
      * Deberá demostrar en html los datos del empleado y el aumento salarial.
     */
 
-    
+    const heads = ["Nombre: ", "Salario: ", "Categoría: ", "Aumento: "];
 
-    const nombre = "Pepito";
-    const salario = "500";
-    const categoria = "B";
-    const aumento = calcularAumento(categoria,salario);
+    setLabel();
+
+    function calcular() {
+        const nombre = document.getElementById('nombre');
+        const salario = document.getElementById('salario');
+        const categoria = document.getElementById('categoria');
+
+        const aumento = calcularAumento(categoria.value, Number(salario.value));
+        let variables = [nombre.value, salario.value, categoria.value, aumento];
+        
+        mostrarResultados(variables);
+    }
+    
+    function setLabel() {
+        const labels = document.querySelectorAll('label');
+        
+        for (let i = 0; i < labels.length; i++) {
+            labels[i].textContent = heads[i];
+        }
+    }
 
     function calcularAumento(categoria, salario) {
+        let aumento = 0;
         switch (categoria) {
             case "A":
                 aumento = salario * 0.15;
@@ -68,57 +113,23 @@
             default:
                 break;
         }
+        return aumento;
     }
 
-    let tabla = document.getElementById("tabla");
+    function mostrarResultados(variables) {
+        const tablaR = document.getElementById('resultado');
+        const th = tablaR.querySelectorAll('th');
+        const td = tablaR.querySelectorAll('td');
 
-    let fila = document.createElement('tr');
-    let data1 = document.createElement('td');
-    data1.textContent("Nombre:");
-    let data2 = document.createElement('td');
-    data2.textContent(nombre);
+        for (let i = 0; i < heads.length; i++) {
+            th[i].textContent = heads[i];
+        }
 
-    fila.appendChild(data1);
-    fila.appendChild(data2);
-
-    tabla.appendChild(fila);
+        for (let i = 0; i < heads.length; i++) {
+            td[i].textContent = variables[i];
+        }
+    }
     
-    /* let fila1 = crearFila("Nombre", nombre);
-    let fila2 = crearFila("Salario", salario);
-    let fila3 = crearFila("Categoría", categoría);
-    let fila4 = crearFila("Aumento", aumento);
+</script>
 
-    tabla.appendChild(fila1);
-    tabla.appendChild(fila2);
-    tabla.appendChild(fila3);
-    tabla.appendChild(fila4); */
-/*
-    let titulo = document.createElement("h3");
-    titulo.innerText("Prueba tabla");
-
-    let tabla = document.createElement("table");
-
-    let fila1 = crearFila("Nombre", nombre);
-    let fila2 = crearFila("Salario", salario);
-    let fila3 = crearFila("Categoría", categoría);
-    let fila4 = crearFila("Aumento", aumento);
-
-    tabla.appendChild(fila1);
-    tabla.appendChild(fila2);
-    tabla.appendChild(fila3);
-    tabla.appendChild(fila4);
-*/
-    function crearFila(col1, col2) {
-        let fila = document.createElement("tr");
-        fila.appendChild(crearTag("th",col1));
-        fila.appendChild(crearTag("td",col2));
-        return fila;
-    }
-
-    function crearTag(tag, content) {
-        let elemento = document.createElement(tag);
-        elemento.innerText(content);
-        return elemento;
-    } 
-</script> -->
 </html>
