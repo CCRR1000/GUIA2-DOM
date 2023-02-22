@@ -7,20 +7,56 @@
     <title>GUIA 2 - Ejercicio 5</title>
 </head>
 <body>
-    
+    <div>
+        <h1>Impuesto Automóviles</h1>
+        <label>Seleccione un automovil:</label>
+        <select id="auto">
+            <option value=""></option>
+            <option value="FORD FIESTA">FORD FIESTA</option>
+            <option value="FORD FOCUS" >FORD FOCUS </option>
+            <option value="FORD ESCAPE">FORD ESCAPE</option>
+        </select>
+
+        <br><br>
+        <button onclick="verDescuento()">Consultar descuento</button>
+        <br><br><br>
+
+        <table>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </body>
 <script>
     /**
      * EJERCICIO 5:
      * Realizar una función para una tienda de coches en donde se deberá calcular: 
      * Si el coche a la venta es un FORD FIESTA, aplicar un 5% de descuento en la compra. 
-     * Si el coche a la venta es un FORD FOCUS, el descuento será del 10% y si es un FORD ESCAPE el descuento será del 20%. 
+     * Si el coche a la venta es un FORD FOCUS, el descuento será del 10% 
+     * y si es un FORD ESCAPE el descuento será del 20%. 
      * Mostrar en html el coche seleccionado y el descuento que se aplicara en base a lo que selecciono el usuario.
     */
 
-    let auto = "FORD ESCAPE";
+    // document.write("Auto seleccionado: " + auto + ", el descuento a aplicar es de " + getDescuento(auto) + "%");
 
-    document.write("Auto seleccionado: " + auto + ", el descuento a aplicar es de " + getDescuento(auto) + "%");
+    function verDescuento() {
+        let auto = document.getElementById('auto').value;
+        let descuento = getDescuento(auto);
+
+        let th = document.querySelectorAll('th');
+        th[0].textContent = "Automóvil:";
+        th[1].textContent = "Descuento:";
+        
+        let td = document.querySelectorAll('td');
+        td[0].textContent = auto;
+        td[1].textContent = descuento + "%";
+    }
 
     function getDescuento(auto) {
         let descuento = 0;

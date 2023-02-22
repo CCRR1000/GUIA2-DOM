@@ -7,6 +7,22 @@
     <title>GUIA 2 - Ejercicio 4</title>
 </head>
 <body>
+    <table>
+        <tr>
+            <th> <label for="">Primer Número:</label> </th>
+            <td> <input id="num1"> </td>
+        </tr>
+        <tr>
+            <th> <label for="">Segundo Número: </label> </th>
+            <td> <input id="num2"> </td>
+        </tr>
+    </table>
+
+    <br>
+    <button onclick="hallarMayor()">Hallar mayor</button>
+    <br><br>
+
+    <p> </p>
     
 </body>
 <script>
@@ -16,14 +32,14 @@
      * calcular cual número es el mayor y devolverlo.
     */
 
-    let num1 = 50;
-    let num2 = 10;
+    function hallarMayor() {
+        const num1 = Number(document.getElementById('num1').value);
+        const num2 = Number(document.getElementById('num2').value);
 
-    document.write("El numero mayor es: " + hallarMayor(num1,num2));
-
-    function hallarMayor(num1,num2) {
         let mayor = (num1 > num2) ? num1 : num2;
-        return mayor;
+
+        const parrafo = document.querySelector('p');
+        parrafo.textContent = "El número mayor es: " + mayor;
     }
     
 </script>

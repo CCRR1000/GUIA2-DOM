@@ -7,7 +7,52 @@
     <title>GUIA 2 - Ejercicio 6</title>
 </head>
 <body>
-    
+    <div>
+        <h1>Descuento Viajes</h1>
+        <table>
+            <tr>
+                <th>Origen:</th>
+                <td>
+                    <select id="origen">
+                        <option value=""></option>
+                        <option value="CIUDAD DE PALMA">CIUDAD DE PALMA</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Destino:</th>
+                <td>
+                    <select id="destino">
+                        <option value=""></option>
+                        <option value="LA COSTA DEL SOL">LA COSTA DEL SOL</option>
+                        <option value="PANCHIMALCO">PANCHIMALCO</option>
+                        <option value="PUERTO EL TRIUNFO">PUERTO EL TRIUNFO</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <br><br>
+        <button onclick="consultarDescuento()">Consultar Descuento</button>
+        <br><br>
+
+        <table id="respuesta">
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </body>
 <script>
     /**
@@ -18,26 +63,66 @@
      * y si el destino es Puerto el Triunfo el descuento será del 15%.
     */
 
-    let destino = "PANCHIMALCO";
+    function consultarDescuento() {
+        let origen = document.getElementById('origen').value;
+        let destino = document.getElementById('destino').value;
+        let descuento = getDescuento();
 
-    document.write("Destino seleccionado: " + destino + ", el descuento a aplicar es de " + getDescuento(destino) + "%");
+        console.log("inicio variables");
+        console.log(origen + " - " + destino + " = " + descuento);
+        mostrarDescuento(origen, destino, descuento);
+    }
 
-    function getDescuento(auto) {
+    function getDescuento(origen, destino) {
         let descuento = 0;
-        switch (auto) {
-            case "LA COSTA DEL SOL":
-                descuento = 5;
-                break;
-            case "PANCHIMALCO":
-                descuento = 10;
-                break;
-            case "PUERTO EL TRIUNFO":
-                descuento = 15;
-                break;
-            default:
-                break;
+
+        if (origen != "CIUDAD DE PALMA") {
+            console.log("entró al if");
+            console.log("origen: " + origen);
+
+            
+            switch (destino) {
+                case "LA COSTA DEL SOL":
+                    console.log("costa");
+                    descuento = 5;
+                    break;
+                case "PANCHIMALCO":
+                    console.log("panchi");
+                    descuento = 10;
+                    break;
+                case "PUERTO EL TRIUNFO":
+                    console.log("puerto");
+                    descuento = 15;
+                    break;
+                default:
+                    console.log("default");
+                    break;
+
+                console.log("entró al switch");
+                console.log("destino: " + destino);
+            }
         }
         return descuento;
+        
     }
+
+    function mostrarDescuento(origen, destino, descuento) {
+
+        console.log("mostrar datos");
+        console.log(origen + " - " + destino + " = " + descuento);
+
+        let tabla2 = document.getElementById('respuesta');
+        
+        let th = tabla2.querySelectorAll('th');
+        th[0].textContent = "Origen:";
+        th[1].textContent = "Destino:";
+        th[2].textContent = "Descuento:";
+        
+        let td = tabla2.querySelectorAll('td');
+        td[0].textContent = origen;
+        td[1].textContent = destino;
+        td[2].textContent = descuento + "%";
+    }
+
 </script>
 </html>
