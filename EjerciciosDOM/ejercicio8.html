@@ -8,6 +8,15 @@
 </head>
 <body>
     
+    <div>
+        <h1>Conversion a Grados Farenheit</h1>
+        <label for="">Ingrese Grados Celsius:</label>
+        <input type="text">
+        <br>
+        <button onclick="convertir()">Convertir</button>
+        <br><br>
+        <p> </p>
+    </div>
 </body>
 <script>
     /**
@@ -20,21 +29,24 @@
      *     ♥ Si no está entre ningún caso anterior la frase “Temperatura desconocida”
     */
 
-    let celcius = -7;
-    let gf = (celcius * 9/5) + 32;
+    function convertir() {
+        let celsius = Number(document.querySelector('input').value);
+        let farenheit = (celsius * 9/5) + 32;
+        let rango = getRango(farenheit);
 
-    let rango = getRango(gf);
-    document.write("Celsius: " + celcius + " - Farenheit: " + gf + "<br>");
-    document.write(rango);
+        let resultado = document.querySelector('p');
+        resultado.innerHTML = "<b>Grados Farenheit: </b>" + farenheit + "° <br><b>Resultado: </b>" + rango + ".";
+    }
 
     function getRango(grados) {
-        if (gf < 14 || gf > 96) {
+        
+        if (grados < 14 || grados > 96) {
             return "Temperatura desconocida";
-        } else if (gf < 32) {
+        } else if (grados < 32) {
             return "Temperatura baja";
-        } else if (gf < 68) {
+        } else if (grados < 68) {
             return "Temperatura adecuada";
-        } else if (gf <= 96) {
+        } else if (grados <= 96) {
             return "Temperatura alta";
         }
     }

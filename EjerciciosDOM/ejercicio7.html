@@ -7,7 +7,30 @@
     <title>GUIA 2 - Ejercicio 7</title>
 </head>
 <body>
-    
+    <div>
+        <h1>Promedio de notas</h1>
+        <table>
+            <tr>
+                <th>Nota 1:</th>
+                <td> <input type="text" id="nota1"> </td>
+                <th>Valor ponderado:</th>
+                <td> <input type="text" id="pond1"> </td>
+            </tr>
+            <tr>
+                <th>Nota 2:</th>
+                <td> <input type="text" id="nota2"> </td>
+                <th>Valor ponderado:</th>
+                <td> <input type="text" id="pond2"> </td>
+            </tr>
+        </table>
+
+        <br>
+        <button onclick="calcular()" >Calcular</button>
+        <br><br>
+
+        <p></p>
+
+    </div>
 </body>
 <script>
     /**
@@ -17,9 +40,16 @@
      * la web muestra como resultado la nota media ponderada.
     */
 
-    let nota1 = 58;
-    let nota2 = 43;
+    function calcular() {
+        let nota1 = Number(document.getElementById('nota1').value);
+        let pond1 = Number(document.getElementById('pond1').value);
+        let nota2 = Number(document.getElementById('nota2').value);
+        let pond2 = Number(document.getElementById('pond2').value);
+        let media = ((nota1*pond1/100) + (nota2*pond2/100))/2 ;
 
-    let media = (nota1 + nota2) / 2;
+        let parrafo = document.querySelector('p');
+        parrafo.textContent = "La media de las notas es: " + media.toFixed(2);
+    }
+    
 </script>
 </html>
