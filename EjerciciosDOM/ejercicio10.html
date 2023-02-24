@@ -7,7 +7,88 @@
     <title>GUIA 2 - Ejercicio 10</title>
 </head>
 <body>
-    
+    <div>
+        <h1>Promedio de Edades</h1>
+
+        <section id="manana">
+            <h3>Turno de la Mañana</h3>
+            <label for=""> <b>1o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>2o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>3o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>4o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>5o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+        </section>
+
+        <section id="tarde">
+            <h3>Turno de la Tarde</h3>
+            <label for=""> <b>1o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>2o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>3o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>4o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>5o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>6o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+        </section>
+
+        <section id="noche">
+            <h3>Turno de la Noche</h3>
+            <label for=""> <b>1o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>2o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>3o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>4o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>5o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>6o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>7o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>8o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>9o.  Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>10o. Estudiante:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>11o. Estudiante:</b></label>
+            <input type="text"> <br><br>
+        </section>
+
+        <br>
+        <button onclick="promediar()">Calcular promedios</button>
+        <br><br>
+
+        <table>
+            <tr>
+                <th>Promedio del turno de la Mañana:</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Promedio del turno de la Tarde:</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Promedio del turno de la Noche:</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Promedio Mayor:</th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </body>
 <script>
     /**
@@ -24,38 +105,27 @@
      *     ♥ Mostrar por pantalla un mensaje que indique cuál de los tres turnos tiene un promedio de edades mayor
     */
 
-    let manana = new Array(5);
-    let tarde = new Array(6);
-    let noche = new Array(11);
+    function promediar() {
 
-    for (let i = 0; i < manana.length; i++) {
-        manana[i] = Number(prompt("TURNO MAÑANA:\nIngrese el " + (i+1) + "o. número:"));
+        let manana = document.getElementById('manana').querySelectorAll('input');
+        let tarde  = document.getElementById('tarde' ).querySelectorAll('input');
+        let noche  = document.getElementById('noche' ).querySelectorAll('input');
+
+        let mediaManana = getPromedio(manana);
+        let mediaTarde = getPromedio(tarde);
+        let mediaNoche = getPromedio(noche);
+
+        let mayor = getMayor(mediaManana, mediaTarde, mediaNoche);
+
+        printPromedios(mediaManana, mediaTarde, mediaNoche, mayor);
     }
-    for (let i = 0; i < tarde.length; i++) {
-        tarde[i] = Number(prompt("TURNO TARDE:\nIngrese el " + (i+1) + "o. número:"));
-    }
-    for (let i = 0; i < noche.length; i++) {
-        noche[i] = Number(prompt("TURNO NOCHE:\nIngrese el " + (i+1) + "o. número:"));
-    }
-
-    let mediaManana = getPromedio(manana);
-    let mediaTarde = getPromedio(tarde);
-    let mediaNoche = getPromedio(noche);
-
-    let mayor = getMayor(mediaManana, mediaTarde, mediaNoche);
-
-    document.write("Promedio Mañana: " + mediaManana + "<br>");
-    document.write("Promedio Tarde: " + mediaTarde + "<br>");
-    document.write("Promedio Noche: " + mediaNoche + "<br>");
-
-    document.write("<br>Promedio Mayor: " + mayor + "<br>");
 
     function getPromedio(array) {
-        let media = 0;
+        let sumatoria = 0;
         array.forEach(num => {
-            media += num;
+            sumatoria += Number(num.value);
         });
-        return (media / array.length);
+        return (sumatoria / array.length);
     }
 
     function getMayor(num1, num2, num3) {
@@ -67,5 +137,14 @@
             return num3;
         }
     }
+
+    function printPromedios(mediaManana, mediaTarde, mediaNoche, mayor) {
+        let td = document.querySelectorAll('td');
+
+        for (let i = 0; i < td.length; i++) {
+            td[i].textContent = arguments[i];   
+        }
+    }
+    
 </script>
 </html>

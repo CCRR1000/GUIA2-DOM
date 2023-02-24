@@ -16,8 +16,8 @@
                     <select id="origen">
                         <option value=""></option>
                         <option value="CIUDAD DE PALMA">CIUDAD DE PALMA</option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option value="CIUDAD LOREM"></option>
+                        <option value="CIUDAD IPSUM LOREM"></option>
                     </select>
                 </td>
             </tr>
@@ -66,7 +66,7 @@
     function consultarDescuento() {
         let origen = document.getElementById('origen').value;
         let destino = document.getElementById('destino').value;
-        let descuento = getDescuento();
+        let descuento = getDescuento(origen,destino);
 
         console.log("inicio variables");
         console.log(origen + " - " + destino + " = " + descuento);
@@ -76,7 +76,7 @@
     function getDescuento(origen, destino) {
         let descuento = 0;
 
-        if (origen != "CIUDAD DE PALMA") {
+        if (origen == "CIUDAD DE PALMA") {
             console.log("entró al if");
             console.log("origen: " + origen);
 

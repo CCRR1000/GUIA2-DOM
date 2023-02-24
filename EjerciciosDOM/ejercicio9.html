@@ -7,7 +7,57 @@
     <title>GUIA 2 - Ejercicio 9</title>
 </head>
 <body>
-    
+    <div>
+        <h1>Ingrese 10 valores enteros</h1>
+
+        <section>
+            <label for=""> <b>1o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>2o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>3o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>4o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>5o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>6o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>7o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>8o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>9o.  Número:</b></label>
+            <input type="text"> <br><br>
+            <label for=""> <b>10o. Número:</b></label>
+            <input type="text"> <br><br>
+        </section>
+        
+        <br>
+        <button onclick="conteo()">Realizar conteo</button>
+        <br><br>
+
+        <h4>Resultados</h4>
+        <table>
+            <tr>
+                <th>Cantidad de valores negativos: </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Cantidad de valores positivos: </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Cantidad de múltiplos de 15: </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Valor acumulado de números pares: </th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 <script>
     /**
@@ -19,33 +69,41 @@
      *     ♥ El valor acumulado de los números ingresados que son pares.
     */
 
-    let array = new Array(10);
-
-    for (let i = 0; i < array.length; i++) {
-        array[i] = Number(prompt("Ingrese el " + (i+1) + "o. número:"));
-    }
-
+    // let array = new Array(10);
     let negativos = 0;
     let positivos = 0;
     let muliplo15 = 0;
     let sumaPares = 0;
+    
+    function conteo() {
+        let valores = document.querySelectorAll('input');
 
-    array.forEach(num => {
+        valores.forEach(element => {
+            evaluarNum(Number(element.value));
+        });
+
+        mostrarResultados();
+    }
+
+    function evaluarNum(num) {
         if (num > 0)
-            positivos++;        
+            positivos++;
         if (num < 0)
-            negativos++;        
+            negativos++;
         if (num % 15 == 0)
-            muliplo15++;        
+            muliplo15++;
         if (num % 2 == 0)
-            sumaPares += num;        
-        document.write(num + "<br>");
-    });
+            sumaPares += num;
+    }
 
-    document.write("Cantidad de valores positivos: " + positivos + "<br>");
-    document.write("Cantidad de valores negativos: " + negativos + "<br>");
-    document.write("Cantidad de múltiplos de 15: " + muliplo15 + "<br>");
-    document.write("Acumulado de números pares: " + sumaPares + "<br>");
+    function mostrarResultados() {
+        let td = document.querySelectorAll('td');
+        let variables = [negativos, positivos, muliplo15, sumaPares];
 
+        for (let i = 0; i < td.length; i++) {
+            td[i].textContent = variables[i];
+        }
+    }
+    
 </script>
 </html>
